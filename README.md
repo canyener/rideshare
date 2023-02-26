@@ -6,6 +6,7 @@ A simple clean architecture implementation for Ride Share API.
 
 ## TL;DR;
 - Be sure to set RAM to 7GBs for docker, apparently 6 causes problems with mssql 2022 (T_T).
+- No branch protection rules applied intentionally.
 - API documentation is handled by swagger, simply visit `/swagger/index.html`. 
 - ValueObject implementation is directly from [Microsoft Official Documentation](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects)
 - No retry policies for database connection implemented intentionally due to time limit.
