@@ -1,0 +1,23 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  ridesharedb:
+    container_name: ridesharedb
+    environment:
+      - MSSQL_SA_PASSWORD=Admin12345678!
+      - ACCEPT_EULA=Y
+    restart: always
+    ports:
+      - "1433:1433"
+
+  rideshare.api:
+    container_name: rideshare.api
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - "ConnectionStrings:RideShareConnectionString=Server=ridesharedb;Database=RideShareDatabase;User=sa;Password=Admin12345678!;Trust Server Certificate=true"
+    depends_on:
+      - ridesharedb
+    ports:
+      - "8004:80"
